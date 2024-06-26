@@ -5,7 +5,6 @@ const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 const formBtn = itemForm.querySelector('button');
 let isEditMode = false;
-//const items = itemList.querySelectorAll('li');
 
 //Initialize App
 function init() {
