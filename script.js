@@ -41,18 +41,12 @@ function onAddItemSubmit(e) {
   e.preventDefault();
   const text = itemInput.value;
 
-<<<<<<< HEAD
-  //Validate Input
-  if (text === '') {
-    alert('Please type in a item to add');
-=======
   // trim the input value to remove whitespace - disallowing duplicate items due to white space in the process
   const newItem = itemInput.value.trim();
 
   // Validate Input
   if (newItem === '') {
     alert('Please add an item');
->>>>>>> 53b3713456823022ce864c80793206c2cc75096a
     return;
   }
 
@@ -64,17 +58,9 @@ function onAddItemSubmit(e) {
     itemToEdit.classList.remove('edit-mode');
     itemToEdit.remove();
     isEditMode = false;
-<<<<<<< HEAD
   } else if (checkIfItemExists(text)) {
-    alert('That item already exists!');
+    alert(`That item "${newItem}" already exists!`);
     return;
-=======
-  } else {
-    if (checkIfItemExists(newItem)) {
-      alert(`The item "${newItem}" already exists!`);
-      return;
-    }
->>>>>>> 53b3713456823022ce864c80793206c2cc75096a
   }
   addItemToDOM(text);
   addItemToLocalStorage(text);
@@ -164,45 +150,7 @@ function setItemToEdit(item) {
   itemInput.value = item.textContent;
 }
 
-<<<<<<< HEAD
 //Filter Methods
-=======
-function removeItem(item) {
-  if (
-    confirm(`Are you sure you want to remove the item "${item.textContent}"?`)
-  ) {
-    // Remove item from DOM
-    item.remove();
-
-    // Remove item from storage
-    removeItemFromStorage(item.textContent);
-
-    checkUI();
-  }
-}
-
-function removeItemFromStorage(item) {
-  let itemsFromStorage = getItemsFromStorage();
-
-  // Filter out item to be removed
-  itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
-
-  // Re-set to localstorage
-  localStorage.setItem('items', JSON.stringify(itemsFromStorage));
-}
-
-function clearItems() {
-  while (itemList.firstChild) {
-    itemList.removeChild(itemList.firstChild);
-  }
-
-  // Clear from localStorage
-  localStorage.removeItem('items');
-
-  checkUI();
-}
-
->>>>>>> 53b3713456823022ce864c80793206c2cc75096a
 function filterItems(e) {
   const items = itemList.querySelectorAll('li');
   const text = e.target.value.toLowerCase();
